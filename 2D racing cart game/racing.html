@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart Race – Visual Track Prototype</title>
+ <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+  <div class="wrap">
+    <div>
+      <canvas id="c" width="1280" height="720"></canvas>
+    </div>
+
+    <div class="panel">
+      <h3 class="h">Controls</h3>
+      <div style="margin-bottom:10px;">
+        <span class="pill" id="pLap"></span>
+        <span class="pill" id="pQuarter"></span>
+        <span class="pill" id="pLeft"></span>
+      </div>
+
+      <div class="btnrow">
+        <button id="btnNext">Next event</button>
+        <button id="btnAuto">Auto: Off</button>
+        <button id="btnReset">Reset</button>
+      </div>
+
+      <p class="muted" style="margin:10px 0 0;">
+        Prototype: one event advances time and moves carts. Replace the random deck with your exact 24 prewritten events later.
+      </p>
+
+      <h3 class="h" style="margin-top:14px;">Carts</h3>
+      <div id="carts"></div>
+
+      <h3 class="h" style="margin-top:14px;">Event Log</h3>
+      <pre id="log"></pre>
+    </div>
+  </div>
+    <script src="racing.js"></script>
+</body>
+</html>
