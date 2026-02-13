@@ -1,3 +1,10 @@
+const BaseStats={
+    HorseAC:10,
+    HorseHP:30,
+    CartBaseHP:50,
+    CartBaseAC:12,
+    CartBaseSpeed:40
+};
 class CartPart {
     name = "";
     quality = 0;
@@ -24,8 +31,8 @@ class CartPart {
     }
 }
 class CartBase extends CartPart {
-    hp = 50;
-    ac = 12;
+    hp = BaseStats.CartBaseHP;
+    ac = BaseStats.CartBaseAC;
     upgrades = [
         { hp: 40, ac: 12 }, { hp: 50, ac: 12 },
         { hp: 65, ac: 13 }, { hp: 75, ac: 14 }
@@ -54,6 +61,7 @@ class CartHorse extends CartPart{
     speed = 0;
     advantage = false;
     disadvantage = true;
+    rammingDamage=0;
     upgrades = [
         { speed: 0, ac: 0, advantage: false, disadvantage: true },
         { speed: 0, ac: 0, advantage: false, disadvantage: false },
@@ -61,6 +69,7 @@ class CartHorse extends CartPart{
         { speed: 0, ac: 0, advantage: true, disadvantage: false }
     ]
     dc={value:10, increment:5}
+
 }
 
 class CartHorseArmor extends CartPart{
@@ -77,22 +86,40 @@ class CartHorseArmor extends CartPart{
     dc={value:14, increment:2}
 }
 
+
+
 class Cart{
     base;
     wheels;
-    horse=[];
+    horses=[];
     speed=40;
-    constructor(base,wheels,horse1,horse2){
+    constructor(base,wheels,horse1,armor1,horse2,armor2){
         this.base=base;
         this.wheels=wheels;
-        this.horse=[horse1,horse2];
+        this.horses=[horse1,horse2];
+        
+        this.armorHorses(armor1,armor2);
         this.calculateSpeed();
     }
     calculateSpeed(){
         this.speed=40;
         this.speed+=this.wheels.speed;
-        for(const h of this.horse){
+        for(const h of this.horses){
             this.speed+=h.speed;
+        }
+    }
+
+    armorHorses(armor1,armor2){
+        let armors=[armor1,armor2];
+        for(let i=0;i<2;i++){
+            let ac=BaseStats.HorseAC,speed=0,rammingDamage=0;
+            let horse=this.horses[i],armor=armors[i];
+            ac+=horse.ac+armor.ac;
+            speed+=horse.speed+armor.speed;
+            rammingDamage+=armor.rammingDamage;
+            horse.ac=ac;
+            horse.speed=speed;
+            horse.rammingDamage=rammingDamage;
         }
     }
 }
@@ -115,5 +142,5 @@ horse1.evaluateRoll(15);
 horse1.applyRoll();
 horse2.evaluateRoll(19);
 horse2.applyRoll();
-var cart=new Cart(base,wheels,horse1,horse2);
+var cart=new Cart(base,wheels,horse1,armor1,horse2,armor2);
 console.log(cart);
