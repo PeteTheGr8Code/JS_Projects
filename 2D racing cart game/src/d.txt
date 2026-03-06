@@ -1,0 +1,47 @@
+@Composable
+fun ParentZoneScreen(
+    onBackClick: () -> Unit
+) {
+    val tasks = remember { mockTasksForParentZone() }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Zone parent") },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Retour")
+                    }
+                }
+            )
+        }
+    ) { padding ->
+
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp)
+        ) {
+
+            item {
+                TasksSection(
+                    tasks = tasks,
+                    onSeeAllClick = { /* TODO */ },
+                    onCreateTaskClick = { /* TODO */ },
+                    onOpenTaskDetails = { /* TODO */ },
+                    onApproveSubmitted = { /* TODO */ },
+                    onRejectSubmitted = { /* TODO */ },
+                    onRemindTask = { /* TODO */ },
+                    onEditTask = { /* TODO */ }
+                )
+            }
+
+            // Plus tard :
+            // item { PointsSection(...) }
+            // item { RewardsSection(...) }
+
+        }
+    }
+}

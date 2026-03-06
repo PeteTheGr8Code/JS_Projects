@@ -1,0 +1,151 @@
+{
+  "crew": [
+    {
+      "id": "pc-1",
+      "name": "Yapo",
+      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "stats": {
+        "STR": 0,
+        "DEX": 1,
+        "WIS": 2,
+        "PER": 2,
+        "SUR": 2,
+        "NAT": 3,
+        "INV": 6,
+        "TINK": 0,
+        "CARP": 0,
+        "ANIM": 2,
+        "ATH": 0
+      },
+      "tags": ["player"],
+      "traits": [],
+      "notes": ""
+    },
+    {
+      "id": "pc-2",
+      "name": "Alba",
+      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "stats": {
+        "STR": 2,
+        "DEX": 4,
+        "WIS": 3,
+        "PER": 6,
+        "SUR": 3,
+        "NAT": 1,
+        "INV": 1,
+        "TINK": 0,
+        "CARP": 0,
+        "ANIM": 3,
+        "ATH": 2
+      },
+      "tags": ["player"],
+      "traits": [],
+      "notes": ""
+    },
+    {
+      "id": "pc-3",
+      "name": "Jobry",
+      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "stats": {
+        "STR": 2,
+        "DEX": 3,
+        "WIS": 3,
+        "PER": 3,
+        "SUR": 3,
+        "NAT": 0,
+        "INV": 2,
+        "TINK": 0,
+        "CARP": 0,
+        "ANIM": 3,
+        "ATH": 2
+      },
+      "tags": ["player"],
+      "traits": [],
+      "notes": ""
+    },
+    {
+      "id": "pc-4",
+      "name": "Obiwa",
+      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "stats": {
+        "STR": 3,
+        "DEX": 2,
+        "WIS": 3,
+        "PER": 6,
+        "SUR": 6,
+        "NAT": 1,
+        "INV": 1,
+        "TINK": 0,
+        "CARP": 0,
+        "ANIM": 6,
+        "ATH": 6
+      },
+      "tags": ["player"],
+      "traits": [],
+      "notes": ""
+    },
+    {
+      "id": "pc-5",
+      "name": "Vlad",
+      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "stats": {
+        "STR": 4,
+        "DEX": 2,
+        "WIS": 2,
+        "PER": 2,
+        "SUR": 5,
+        "NAT": 2,
+        "INV": 2,
+        "TINK": 0,
+        "CARP": 0,
+        "ANIM": 2,
+        "ATH": 4
+      },
+      "tags": ["player"],
+      "traits": [],
+      "notes": ""
+    },
+    {
+      "id": "pc-6",
+      "name": "Brianna",
+      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "stats": {
+        "STR": 4,
+        "DEX": 4,
+        "WIS": 1,
+        "PER": 4,
+        "SUR": 4,
+        "NAT": 0,
+        "INV": 0,
+        "TINK": 0,
+        "CARP": 0,
+        "ANIM": 1,
+        "ATH": 7
+      },
+      "tags": ["player"],
+      "traits": [],
+      "notes": ""
+    },
+    {
+      "id": "pc-7",
+      "name": "Geariosa",
+      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "stats": {
+        "STR": 0,
+        "DEX": 2,
+        "WIS": 2,
+        "PER": 2,
+        "SUR": 2,
+        "NAT": 7,
+        "INV": 7,
+        "TINK": 7,
+        "CARP": 0,
+        "ANIM": 2,
+        "ATH": 0
+      },
+      "tags": ["player"],
+      "traits": [],
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Cart Creation — Workshop Ledger</title>
+  <style>
+    :root{
+      --bg:#f3e8d2;
+      --paper:#f8f1df;
+      --ink:#3b2a1f;
+      --gold:#8c6b2f;
+      --border:#c9b48a;
+      --muted:#6b5748;
+    }
+    body{
+      margin:0;
+      font-family: Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    header{
+      text-align:center;
+      padding:18px 12px 12px;
+      border-bottom:2px solid var(--border);
+    }
+    header h1{
+      margin:0;
+      font-size:28px;
+      letter-spacing:0.5px;
+    }
+    header .sub{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .progress{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      padding:12px 12px 6px;
+    }
+    .progress .tab{
+      padding:6px 10px;
+      border-bottom:2px solid var(--border);
+      font-size:13px;
+      color:var(--muted);
+      user-select:none;
+    }
+    .progress .tab.active{
+      border-bottom:3px solid var(--gold);
+      color:var(--ink);
+      font-weight:700;
+    }
+    .progress .tab.done{
+      color:var(--ink);
+    }
+
+    .container{
+      display:flex;
+      gap:16px;
+      padding:16px;
+      align-items:flex-start;
+    }
+    .panel{
+      background: var(--paper);
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:14px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    }
+
+    .left{ flex: 0 0 280px; }
+    .center{ flex: 1 1 auto; min-width: 380px;}
+    .right{ flex: 0 0 320px; }
+
+    .panel h3{
+      margin:0 0 10px 0;
+      padding-bottom:6px;
+      border-bottom:1px solid var(--border);
+      font-size:16px;
+      letter-spacing:0.3px;
+    }
+
+    .stats .row{
+      display:flex;
+      justify-content:space-between;
+      padding:6px 0;
+      font-size:16px;
+    }
+    .stats .val{
+      font-weight:700;
+    }
+    .stats .flash{
+      animation: flash 700ms ease-out;
+    }
+    @keyframes flash{
+      0%{ color: var(--gold); transform: translateY(-1px); }
+      100%{ color: var(--ink); transform: translateY(0); }
+    }
+
+    .task-title{
+      font-size:22px;
+      margin:2px 0 6px;
+    }
+    .task-desc{
+      margin:0 0 12px;
+      color:var(--muted);
+      line-height:1.35;
+    }
+
+    .rollbox{
+      border:1px dashed var(--border);
+      border-radius:10px;
+      padding:12px;
+      margin:10px 0 12px;
+      background: rgba(255,255,255,0.25);
+    }
+    .rollbox .rollname{
+      font-weight:700;
+      margin-bottom:6px;
+    }
+    .rollbox .meta{
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .selectedLine{
+      margin-top:10px;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .crew-grid{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      max-height: calc(100vh - 220px);
+      overflow:auto;
+      padding-right:4px;
+    }
+    .crew-card{
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:10px;
+      cursor:pointer;
+      transition: background 150ms ease, border 150ms ease;
+      background: rgba(255,255,255,0.18);
+    }
+    .crew-card:hover{
+      background: rgba(255,255,255,0.35);
+    }
+    .crew-card.selected{
+      border:2px solid var(--gold);
+      background: rgba(140,107,47,0.10);
+    }
+    .crew-name{
+      font-weight:700;
+      margin-bottom:6px;
+    }
+    .crew-stats{
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.5;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .pill{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:2px 8px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+      align-items:center;
+    }
+    button{
+      border:none;
+      border-radius:8px;
+      padding:10px 14px;
+      background: var(--gold);
+      color: #fff;
+      font-size:14px;
+      cursor:pointer;
+    }
+    button.secondary{
+      background: transparent;
+      color: var(--ink);
+      border:1px solid var(--border);
+    }
+    button:disabled{
+      opacity:0.55;
+      cursor:not-allowed;
+    }
+
+    .result{
+      margin-top:10px;
+      padding-top:10px;
+      border-top:1px solid var(--border);
+      color:var(--ink);
+    }
+    .result .big{
+      font-size:22px;
+      font-weight:800;
+      margin:6px 0;
+    }
+    .result .small{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
+
+    @media (max-width: 1050px){
+      .container{ flex-direction:column; }
+      .left,.right,.center{ flex: 1 1 auto; min-width: unset; }
+      .crew-grid{ max-height: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cart Creation — Workshop Ledger</h1>
+    <div class="sub">Build your cart through crew rolls. Crew can be reused across tasks.</div>
+  </header>
+
+  <div class="progress" id="progress"></div>
+
+  <div class="container">
+    <!-- LEFT: CART SHEET -->
+    <div class="panel left">
+      <h3>Cart Sheet</h3>
+      <div class="stats">
+        <div style="font-weight:700;margin:4px 0 6px;">Cart</div>
+        <div class="row"><span>HP</span><span class="val" id="cartHP">50</span></div>
+        <div class="row"><span>AC</span><span class="val" id="cartAC">12</span></div>
+        <div class="row"><span>Speed</span><span class="val" id="cartSpeed">40</span></div>
+
+        <div style="height:10px;"></div>
+
+        <div style="font-weight:700;margin:4px 0 6px;">Horse</div>
+        <div class="row"><span>HP</span><span class="val" id="horseHP">30</span></div>
+        <div class="row"><span>AC</span><span class="val" id="horseAC">10</span></div>
+      </div>
+    </div>
+
+    <!-- CENTER: TASK -->
+    <div class="panel center">
+      <h3>Current Task</h3>
+      <div class="task-title" id="taskTitle">Loading…</div>
+      <p class="task-desc" id="taskDesc"></p>
+
+      <div class="rollbox">
+        <div class="rollname" id="rollName">—</div>
+        <div class="meta">
+          <div><strong>Uses:</strong> <span id="rollStat">—</span></div>
+          <div><strong>Roll #:</strong> <span id="rollIndex">—</span>/<span id="rollTotal">—</span></div>
+        </div>
+        <div class="selectedLine" id="selectedLine">Select a crew member for this roll.</div>
+
+        <div class="actions">
+          <button id="rollBtn" disabled>Roll d20</button>
+          <button id="applyBtn" class="secondary" disabled>Apply & Continue</button>
+        </div>
+
+        <div class="result" id="result" style="display:none;"></div>
+      </div>
+
+      <div class="small" style="color:var(--muted);font-size:13px;">
+        Note: tier effects are placeholders right now (we’ll tune tiers later). The UI is built so the step config can drive the whole workshop.
+      </div>
+    </div>
+
+    <!-- RIGHT: CREW -->
+    <div class="panel right">
+      <h3>Crew Roster (7)</h3>
+      <div class="crew-grid" id="crewList"></div>
+    </div>
+  </div>
+
+<script>
+/**
+ * ✅ CREW LOADING
+ * Expected crew.json structure (your existing format):
+ * { "crew": [ { "id":"pc-1", "name":"...", "stats": { "STR":0,"DEX":0,"INV":0,"SUR":0,"NAT":0,"TINK":0,"CARP":0,"ANIM":0, ... } } ] }
+ */
+const CREW_JSON_PATH = "data/crew.json";
+
+/**
+ * ✅ WORKSHOP STEPS (match your cart-building order)
+ * You said the earlier steps were wrong—so this config is the “real” structure:
+ * - Base: 2 rolls (Survival/Nature AND Investigation)
+ * - Wheels
+ * - Weapons
+ * - Horse Armor
+ * - Horses
+ *
+ * Each step has 1+ "rolls". Each roll selects a crew member, rolls d20 + stat, and then applies an effect.
+ * Effects are placeholders and easy to change later.
+ */
+const WORKSHOP_STEPS = [
+  {
+    key: "base",
+    name: "Base",
+    desc: "Construct the cart base. Requires two checks: materials quality and structural integrity.",
+    rolls: [
+      { label: "Materials Quality", stat: ["SUR","NAT"], affect: "cartHP" },
+      { label: "Structural Integrity", stat: ["INV"], affect: "cartAC" }
+    ]
+  },
+  {
+    key: "wheels",
+    name: "Wheels",
+    desc: "Build and align the wheels for speed and reliability.",
+    rolls: [
+      { label: "Wheel Crafting", stat: ["TINK","CARP","DEX"], affect: "cartSpeed" }
+    ]
+  },
+  {
+    key: "weapons",
+    name: "Weapons",
+    desc: "Mount the weapon system safely without destabilizing the cart.",
+    rolls: [
+      { label: "Weapon Mounting", stat: ["TINK","INV","STR"], affect: "cartAC" }
+    ]
+  },
+  {
+    key: "horseArmor",
+    name: "Horse Armor",
+    desc: "Fit protective plating without restricting movement.",
+    rolls: [
+      { label: "Armor Fitting", stat: ["CARP","TINK","INV"], affect: "horseAC" }
+    ]
+  },
+  {
+    key: "horses",
+    name: "Horses",
+    desc: "Prepare the horse for racing: endurance and discipline.",
+    rolls: [
+      { label: "Taming / Handling", stat: ["ANIM","CHA"], affect: "horseHP" }
+    ]
+  }
+];
+
+// --- State ---
+let crew = [];
+let stepIndex = 0;
+let rollIndex = 0;
+
+let selectedCrewId = null;
+let pendingRoll = null; // { base, mod, total, bestStatKey, bestStatVal }
+const cart = { cartHP: 50, cartAC: 12, cartSpeed: 40, horseHP: 30, horseAC: 10 };
+
+// --- Helpers ---
+function el(id){ return document.getElementById(id); }
+function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+
+function bestOfStats(memberStats, statKeys){
+  // statKeys can include keys that may not exist; treat missing as 0
+  let bestKey = statKeys[0];
+  let bestVal = (memberStats?.[bestKey] ?? 0);
+  for(const k of statKeys){
+    const v = (memberStats?.[k] ?? 0);
+    if(v > bestVal){ bestVal = v; bestKey = k; }
+  }
+  return { bestKey, bestVal };
+}
+
+function flashStat(domId){
+  const node = el(domId);
+  node.classList.remove("flash");
+  void node.offsetWidth;
+  node.classList.add("flash");
+}
+
+function renderCart(){
+  el("cartHP").textContent = cart.cartHP;
+  el("cartAC").textContent = cart.cartAC;
+  el("cartSpeed").textContent = cart.cartSpeed;
+  el("horseHP").textContent = cart.horseHP;
+  el("horseAC").textContent = cart.horseAC;
+}
+
+function renderProgress(){
+  const p = el("progress");
+  p.innerHTML = "";
+  WORKSHOP_STEPS.forEach((s, i) => {
+    const tab = document.createElement("div");
+    tab.className = "tab" + (i === stepIndex ? " active" : "") + (i < stepIndex ? " done" : "");
+    tab.textContent = s.name;
+    p.appendChild(tab);
+  });
+}
+
+function renderCrew(){
+  const list = el("crewList");
+  list.innerHTML = "";
+  crew.forEach(m => {
+    const card = document.createElement("div");
+    card.className = "crew-card" + (m.id === selectedCrewId ? " selected" : "");
+    const s = m.stats || {};
+    // show a few common keys (only if present)
+    const keysToShow = ["STR","DEX","INV","SUR","NAT","TINK","CARP","ANIM","CHA","WIS","PER"];
+    const pills = keysToShow
+      .filter(k => s[k] !== undefined)
+      .slice(0, 8)
+      .map(k => `<span class="pill">${k} ${s[k]}</span>`)
+      .join("");
+
+    card.innerHTML = `
+      <div class="crew-name">${m.name}</div>
+      <div class="crew-stats">${pills || `<span class="pill">No stats found</span>`}</div>
+    `;
+    card.onclick = () => {
+      selectedCrewId = m.id;
+      renderCrew();
+      el("rollBtn").disabled = false;
+      el("selectedLine").textContent = `Selected: ${m.name}`;
+    };
+    list.appendChild(card);
+  });
+}
+
+function currentStep(){
+  return WORKSHOP_STEPS[stepIndex];
+}
+function currentRoll(){
+  return currentStep().rolls[rollIndex];
+}
+
+function loadTaskUI(){
+  renderProgress();
+  renderCart();
+
+  const step = currentStep();
+  const roll = currentRoll();
+
+  el("taskTitle").textContent = step.name;
+  el("taskDesc").textContent = step.desc;
+
+  el("rollName").textContent = roll.label;
+  const statText = Array.isArray(roll.stat) ? roll.stat.join(" / ") : String(roll.stat);
+  el("rollStat").textContent = statText;
+
+  el("rollIndex").textContent = String(rollIndex + 1);
+  el("rollTotal").textContent = String(step.rolls.length);
+
+  selectedCrewId = null;
+  pendingRoll = null;
+  el("selectedLine").textContent = "Select a crew member for this roll.";
+  el("rollBtn").disabled = true;
+  el("applyBtn").disabled = true;
+
+  el("result").style.display = "none";
+  el("result").innerHTML = "";
+}
+
+function doRoll(){
+  const member = crew.find(c => c.id === selectedCrewId);
+  if(!member) return;
+
+  const roll = currentRoll();
+  const statKeys = Array.isArray(roll.stat) ? roll.stat : [roll.stat];
+
+  const { bestKey, bestVal } = bestOfStats(member.stats || {}, statKeys);
+
+  const base = Math.floor(Math.random() * 20) + 1;
+  const mod = bestVal;
+  const total = base + mod;
+
+  pendingRoll = { base, mod, total, bestKey, bestVal, memberName: member.name };
+
+  // Placeholder effect amount (we’ll replace with your tier table later)
+  // Keep it small and predictable for UI testing:
+  const delta = clamp(Math.floor(total / 4), 1, 8);
+
+  // show results (do not apply yet; apply on Apply button)
+  el("result").style.display = "block";
+  el("result").innerHTML = `
+    <div class="small">Crew: <strong>${member.name}</strong> • Using <strong>${bestKey}</strong> (+${bestVal})</div>
+    <div class="big">${base} + ${mod} = ${total}</div>
+    <div class="small">Pending effect: <strong>+${delta}</strong> to <strong>${roll.affect}</strong> (placeholder)</div>
+  `;
+
+  el("applyBtn").disabled = false;
+}
+
+function applyRoll(){
+  if(!pendingRoll) return;
+  const roll = currentRoll();
+  const delta = clamp(Math.floor(pendingRoll.total / 4), 1, 8);
+
+  // Apply the placeholder delta to the affected stat
+  cart[roll.affect] = (cart[roll.affect] ?? 0) + delta;
+  renderCart();
+  flashStat(roll.affect);
+
+  // Advance roll/step
+  const step = currentStep();
+  rollIndex++;
+
+  if(rollIndex >= step.rolls.length){
+    stepIndex++;
+    rollIndex = 0;
+  }
+
+  if(stepIndex >= WORKSHOP_STEPS.length){
+    // completion screen
+    const center = document.querySelector(".panel.center");
+    center.innerHTML = `
+      <h3>Workshop Complete</h3>
+      <div class="task-title">Cart Ready</div>
+      <p class="task-desc">Your cart and horse are prepared. Proceed to role assignment.</p>
+      <div class="panel" style="margin-top:12px;">
+        <h3>Final Stats</h3>
+        <div class="stats">
+          <div style="font-weight:700;margin:4px 0 6px;">Cart</div>
+          <div class="row"><span>HP</span><span class="val">${cart.cartHP}</span></div>
+          <div class="row"><span>AC</span><span class="val">${cart.cartAC}</span></div>
+          <div class="row"><span>Speed</span><span class="val">${cart.cartSpeed}</span></div>
+          <div style="height:10px;"></div>
+          <div style="font-weight:700;margin:4px 0 6px;">Horse</div>
+          <div class="row"><span>HP</span><span class="val">${cart.horseHP}</span></div>
+          <div class="row"><span>AC</span><span class="val">${cart.horseAC}</span></div>
+        </div>
+      </div>
+      <div class="actions" style="margin-top:12px;">
+        <button onclick="alert('Next: Role Assignment screen')">Proceed to Role Assignment</button>
+      </div>
+    `;
+    el("progress").innerHTML = "";
+    return;
+  }
+
+  loadTaskUI();
+}
+
+// --- Init ---
+async function init(){
+  try{
+    const res = await fetch(CREW_JSON_PATH, { cache: "no-store" });
+    if(!res.ok) throw new Error(`Failed to load crew.json (${res.status})`);
+    const data = await res.json();
+
+    crew = (data.crew || []).map((m, idx) => ({
+      id: m.id ?? `pc-${idx+1}`,
+      name: m.name ?? `Crew ${idx+1}`,
+      stats: m.stats ?? {}
+    }));
+
+    // Optional: if your crew.json has more than 7, you can slice here:
+    // crew = crew.slice(0, 7);
+
+    if(crew.length === 0) throw new Error("crew.json loaded but crew[] is empty.");
+
+    renderCrew();
+    loadTaskUI();
+
+    el("rollBtn").onclick = doRoll;
+    el("applyBtn").onclick = applyRoll;
+  } catch(err){
+    const center = document.querySelector(".panel.center");
+    center.innerHTML = `
+      <h3>Error</h3>
+      <div class="task-title">Could not load crew data</div>
+      <p class="task-desc">${String(err.message)}</p>
+      <p class="task-desc">Check that <code>${CREW_JSON_PATH}</code> exists and is served by GitHub Pages.</p>
+    `;
+  }
+}
+init();
+</script>
+</body>
+</html>

@@ -1,4 +1,6 @@
-const BaseStats={
+import Cart from "./Cart.js";
+import CrewMember, { ROLES, STATS } from "./CrewMember.js";
+export const BaseStats={
     HorseAC:10,
     HorseHP:30,
     CartBaseHP:50,
@@ -88,41 +90,6 @@ class CartHorseArmor extends CartPart{
 
 
 
-class Cart{
-    base;
-    wheels;
-    horses=[];
-    speed=40;
-    constructor(base,wheels,horse1,armor1,horse2,armor2){
-        this.base=base;
-        this.wheels=wheels;
-        this.horses=[horse1,horse2];
-        
-        this.armorHorses(armor1,armor2);
-        this.calculateSpeed();
-    }
-    calculateSpeed(){
-        this.speed=40;
-        this.speed+=this.wheels.speed;
-        for(const h of this.horses){
-            this.speed+=h.speed;
-        }
-    }
-
-    armorHorses(armor1,armor2){
-        let armors=[armor1,armor2];
-        for(let i=0;i<2;i++){
-            let ac=BaseStats.HorseAC,speed=0,rammingDamage=0;
-            let horse=this.horses[i],armor=armors[i];
-            ac+=horse.ac+armor.ac;
-            speed+=horse.speed+armor.speed;
-            rammingDamage+=armor.rammingDamage;
-            horse.ac=ac;
-            horse.speed=speed;
-            horse.rammingDamage=rammingDamage;
-        }
-    }
-}
 
 var base=new CartBase("Test Base");
 var wheels= new CartWheels("Test Wheels");
@@ -130,6 +97,11 @@ var horse1= new CartHorse("Pierre");
 var horse2 = new CartHorse("Pegasus");
 var armor1=new CartHorseArmor("Leather");
 var armor2=new CartHorseArmor("Chainmail");
+const crew=[
+    new CrewMember("Vlad",createStats(),ROLES.ATTACKER),
+    new CrewMember("Brianna",createStats(),ROLES.DEFENDER),
+    new CrewMember("Jasper",createStats(),ROLES.DRIVER)
+];
 armor1.evaluateRoll(14);
 armor1.applyRoll();
 armor2.evaluateRoll(12);
@@ -142,5 +114,13 @@ horse1.evaluateRoll(15);
 horse1.applyRoll();
 horse2.evaluateRoll(19);
 horse2.applyRoll();
-var cart=new Cart(base,wheels,horse1,armor1,horse2,armor2);
+var cart=new Cart(base,wheels,horse1,armor1,horse2,armor2,crew);
 console.log(cart);
+
+function createStats(){
+    let stats= new Array(STATS.STATSCOUNT).fill(0);
+    for(let i=0;i<stats.length;i++){
+        stats[i]=Math.floor(Math.random()*4);
+    }
+    return stats;
+}
