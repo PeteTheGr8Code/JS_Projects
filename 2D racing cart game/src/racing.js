@@ -7,7 +7,7 @@ export const BaseStats={
     CartBaseAC:12,
     CartBaseSpeed:40
 };
-class CartPart {
+export class CartPart {
     name = "";
     quality = 0;
     constructor(name) {
@@ -32,7 +32,7 @@ class CartPart {
        }
     }
 }
-class CartBase extends CartPart {
+export class CartBase extends CartPart {
     hp = BaseStats.CartBaseHP;
     ac = BaseStats.CartBaseAC;
     upgrades = [
@@ -44,7 +44,7 @@ class CartBase extends CartPart {
 
 
 }
-class CartWheels extends CartPart {
+export class CartWheels extends CartPart {
 
     speed = -5;
     advantage = false;
@@ -56,7 +56,7 @@ class CartWheels extends CartPart {
     dc = { value: 12, increment: 3 };
 }
 
-class CartHorse extends CartPart{
+export class CartHorse extends CartPart{
 
     ac = 10;
     hp = 30;
@@ -74,7 +74,7 @@ class CartHorse extends CartPart{
 
 }
 
-class CartHorseArmor extends CartPart{
+export class CartHorseArmor extends CartPart{
 
     ac=0;
     speed=0;
@@ -114,8 +114,8 @@ horse1.evaluateRoll(15);
 horse1.applyRoll();
 horse2.evaluateRoll(19);
 horse2.applyRoll();
-var cart=new Cart(base,wheels,horse1,armor1,horse2,armor2,crew);
-console.log(cart);
+//var cart=new Cart(base,wheels,horse1,armor1,horse2,armor2,crew);
+//console.log(cart);
 
 function createStats(){
     let stats= new Array(STATS.STATSCOUNT).fill(0);

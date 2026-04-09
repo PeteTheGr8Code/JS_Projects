@@ -1,5 +1,5 @@
 import { ROLES, STATS } from "./CrewMember.js";
-import { BaseStats } from "../racing.js";
+import { BaseStats } from "./racing.js";
 export default class Cart{
     base;
     wheels;
@@ -40,10 +40,10 @@ export default class Cart{
     }
 
     addCrewModifiers(){
-        this.base.ac+=this.defender.stats[STATS.STRENGTH];
-        for(const horse in this.horses){
-            horse.ac+=this.driver.stats[STATS.WISDOM];
-        }
+        this.base.ac+=this.defender.stats.STR;
+        this.horses.forEach(horse=>{
+            horse.ac+=this.driver.stats.WIS;
+        });
     }
 
     assignCrew(crew){

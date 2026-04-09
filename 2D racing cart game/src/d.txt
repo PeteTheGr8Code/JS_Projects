@@ -45,3 +45,173 @@ fun ParentZoneScreen(
         }
     }
 }
+
+---
+
+# 🛞 Petunia Regal Cart Racing — Full System
+
+## CART COMPOSITION (REQUIRED ROLES)
+
+Each cart is composed of **7 elements**:
+
+1. **Base**
+2. **Wheels**
+3. **Weapons**
+4. **Horse Armor**
+5. **Horses**
+6. **Driver**
+7. **Attacker / Defender (ATKer / DFDer)**
+
+Each element contributes **stats, checks, or modifiers**.
+
+---
+
+## 1️⃣ BASE (STRUCTURE)
+
+### Acquisition
+
+* Requires **scavenging or harvesting materials in nearby woods**
+* Party makes **2 group checks**:
+
+  * **Survival / Nature (DC 13–17)** → quality of wood
+  * **Investigation (DC 13–17)** → structural integrity
+
+### Base Quality
+
+| Result     | Effect             |
+| ---------- | ------------------ |
+| Poor       | Base HP −10        |
+| Standard   | No modifier        |
+| Reinforced | Base HP +15, +1 AC |
+| Masterwork | Base HP +25, +2 AC |
+
+### Base Stats
+
+* **Base HP:** 50 (before modifiers)
+* **Base AC:** 12 + DFDer STR mod (see below)
+
+---
+
+## 2️⃣ WHEELS (CRAFTING)
+
+### Crafting Check
+
+* **Dexterity (Tinker’s Tools / Carpenter’s Tools)**
+* DC depends on ambition:
+
+  * DC 12 → functional
+  * DC 15 → smooth
+  * DC 18 → racing-grade
+
+### Wheel Quality
+
+| Quality      | Effect                                     |
+| ------------ | ------------------------------------------ |
+| Shoddy       | −5 ft speed                                |
+| Smooth       | +5 ft speed                                |
+| Racing-grade | +10 ft speed, advantage on maneuver checks |
+
+---
+
+## 3️⃣ HORSES
+
+### Acquisition & Taming
+
+* Each cart uses **2 horses**
+* **Handle Animal (Animal Handling)** to tame
+* Roll **once per horse**
+
+### Horse Quality
+
+| Check Result | Horse Effect                            |
+| ------------ | --------------------------------------- |
+| Fail         | Skittish (disadvantage on Horse Issues) |
+| Success      | Normal                                  |
+| Success +5   | Trained (+1 AC, +5 ft speed)            |
+| Nat 20       | Exceptional (advantage on Horse saves)  |
+
+### Horse Stats
+
+* **Horse AC:** 10 + Driver WIS mod
+* **Horse HP:** 30 each
+
+---
+
+## 4️⃣ HORSE ARMOR
+
+### Crafting / Acquisition
+
+* Smithing, leatherwork, or sponsor gift
+* STR or DEX (Tools) check DC 14–18
+
+### Effects
+
+| Armor Type | Effect                   |
+| ---------- | ------------------------ |
+| None       | No bonus                 |
+| Light      | +1 Horse AC              |
+| Reinforced | +2 Horse AC, −5 ft speed |
+| Spiked     | +1 AC, ramming damage    |
+
+---
+
+## 5️⃣ WEAPONS (CART OFFENSE)
+
+### Weapon Accuracy
+
+* Uses **ATKer DEX modifier**
+* Attacks target:
+
+  * **Enemy Base AC** (for structure damage)
+  * **Enemy Horse AC** (to destabilize)
+
+### Weapon Types
+
+| Weapon           | Effect                |
+| ---------------- | --------------------- |
+| Javelin Launcher | Ranged, single target |
+| Chain Harpoon    | Grapple enemy cart    |
+| Oil Dropper      | Area hazard           |
+| Bladed Axle      | Damage on collisions  |
+
+---
+
+## 6️⃣ DRIVER (CORE ROLE)
+
+The Driver is the **engine of the race**.
+
+### Driver Checks (varies by event)
+
+* **Dexterity** → precision turns
+* **Perception** → hazards, traps
+* **Athletics** → brute control, impact recovery
+
+### Driver Bonus
+
+* **Driver WIS mod added to Horse AC**
+
+Failure here is usually **position loss**, spins, or crashes.
+
+---
+
+## 7️⃣ ATTACKER / DEFENDER (ATKer / DFDer)
+
+### DFDer (Defender)
+
+* Adds **STR modifier to Base AC**
+* Can react to attacks:
+
+  * Block
+  * Brace
+  * Counter-ram
+
+### ATKer (Attacker)
+
+* Uses **DEX mod for weapon attacks**
+* Can also:
+
+  * Sabotage
+  * Intimidate enemy horses
+  * Target wheels / driver
+
+---
