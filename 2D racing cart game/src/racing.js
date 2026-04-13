@@ -91,7 +91,7 @@ export class CartHorseArmor extends CartPart{
 
 
 
-var base=new CartBase("Test Base");
+/* var base=new CartBase("Test Base");
 var wheels= new CartWheels("Test Wheels");
 var horse1= new CartHorse("Pierre");
 var horse2 = new CartHorse("Pegasus");
@@ -113,14 +113,14 @@ wheels.applyRoll();
 horse1.evaluateRoll(15);
 horse1.applyRoll();
 horse2.evaluateRoll(19);
-horse2.applyRoll();
+horse2.applyRoll(); */
 //var cart=new Cart(base,wheels,horse1,armor1,horse2,armor2,crew);
 //console.log(cart);
 
-function createStats(){
-    let stats= new Array(STATS.STATSCOUNT).fill(0);
-    for(let i=0;i<stats.length;i++){
-        stats[i]=Math.floor(Math.random()*4);
-    }
-    return stats;
-}
+// function createStats(){
+//     let stats= new Array(STATS.STATSCOUNT).fill(0);
+//     for(let i=0;i<stats.length;i++){
+//         stats[i]=Math.floor(Math.random()*4);
+//     }
+//     return stats;
+// }

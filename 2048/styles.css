@@ -1,0 +1,92 @@
+
+body{
+    height:100%;
+    margin: 0;
+    background-color: lime;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.gameboard{
+    background-color: white;
+    padding:30px;
+    width: 30vw;
+    height: 50vh;
+    border-radius:50px;
+    border: 10px solid red;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0px;
+}
+
+.cell{
+
+    border: 2px solid black;
+    display: flex;
+   
+}
+
+.tile{
+    font-size: 2em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tile-0{
+    background-color: lightgray;
+}
+.tile-2{
+    background-color: yellow;
+}
+.tile-4{
+    background-color: orange;
+}
+.tile-8{
+    background-color: red;
+    color: white;
+}
+.tile-16{
+    background-color: pink;
+    color: white;
+}
+.tile-32{
+    background-color: lightgreen;    color: white;
+}
+.tile-64{
+    background-color: green;    color: white;
+}
+.tile-128{
+    background-color: lightcoral;    color: white;
+}
+.tile-256{
+    background-color: lightseagreen;    color: white;
+}
+.tile-512{
+    background-color: lightcyan;    color: white;
+}
+.tile-1024{
+    background-color: lightgoldenrodyellow;    color: white;
+}
+.tile-2048{
+    background-color: gold;    color: white;
+}
+.tile-4096{
+    background-color: darkorange;    color: white;
+}
+.tile-8192{
+    background-color: darkred;    color: white;
+}
+.tile-16384{
+    background-color: darkblue;    color: white;
+}
+.tile-32768{
+    background-color: purple;    color: white;
+}

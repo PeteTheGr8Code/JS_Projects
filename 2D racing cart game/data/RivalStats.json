@@ -1,0 +1,456 @@
+{
+    "rivals": [
+        {
+            "name": "Ogon",
+            "story": "fujiBacked",
+            "id": "crimson-petal",
+            "avatar": "../assets/images/Ogon.png",
+            "base": {
+                "quality": 3,
+                "hp": 80,
+                "ac": 15,
+                "upgrades": [],
+                "dc": {
+                    "value": 13,
+                    "increment": 2
+                }
+            },
+            "wheels": {
+                "quality": 3,
+                "speed": 10,
+                "advantage": true,
+                "upgrades": [],
+                "dc": {
+                    "value": 12,
+                    "increment": 3
+                }
+            },
+            "horses": [
+                {
+                    "name": "Horse 1",
+                    "quality": 3,
+                    "ac": 15,
+                    "hp": 35,
+                    "speed": 5,
+                    "advantage": false,
+                    "disadvantage": false,
+                    "rammingDamage": 4,
+                    "upgrades": [],
+                    "dc": {
+                        "value": 10,
+                        "increment": 5
+                    }
+                },
+                {
+                    "name": "Horse 2",
+                    "quality": 3,
+                    "ac": 15,
+                    "hp": 35,
+                    "speed": 5,
+                    "advantage": false,
+                    "disadvantage": false,
+                    "rammingDamage": 4,
+                    "upgrades": [],
+                    "dc": {
+                        "value": 10,
+                        "increment": 5
+                    }
+                }
+            ],
+            "speed": 60,
+            "attacker": {
+                "id": "rival-1",
+                "name": "Chain Harpoon",
+                "stats": {
+                    "STR": 1,
+                    "DEX": 5,
+                    "WIS": 2,
+                    "PER": 3,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 1,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 1,
+                    "ATH": 2
+                },
+                "role": "Attacker"
+            },
+            "defender": {
+                "id": "rival-2",
+                "name": "Shield Guard",
+                "stats": {
+                    "STR": 4,
+                    "DEX": 2,
+                    "WIS": 2,
+                    "PER": 2,
+                    "SUR": 3,
+                    "NAT": 0,
+                    "INV": 2,
+                    "TINK": 1,
+                    "CARP": 1,
+                    "ANIM": 1,
+                    "ATH": 3
+                },
+                "role": "Defender"
+            },
+            "driver": {
+                "id": "rival-3",
+                "name": "Elite Driver",
+                "stats": {
+                    "STR": 1,
+                    "DEX": 4,
+                    "WIS": 4,
+                    "PER": 3,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 1,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 2,
+                    "ATH": 2
+                },
+                "role": "Driver"
+            }
+        },
+        {
+            "name": "Ram",
+            "story": "UndergroundSyndicate",
+            "id": "blue-heron",
+            "avatar": "../assets/images/Ram.png",
+            "base": {
+                "quality": 2,
+                "hp": 65,
+                "ac": 14,
+                "upgrades": [],
+                "dc": {
+                    "value": 13,
+                    "increment": 2
+                }
+            },
+            "wheels": {
+                "quality": 2,
+                "speed": 5,
+                "advantage": false,
+                "upgrades": [],
+                "dc": {
+                    "value": 12,
+                    "increment": 3
+                }
+            },
+            "horses": [
+                {
+                    "name": "Horse 1",
+                    "quality": 2,
+                    "ac": 13,
+                    "hp": 28,
+                    "speed": 8,
+                    "advantage": false,
+                    "disadvantage": true,
+                    "rammingDamage": 3,
+                    "upgrades": [],
+                    "dc": {
+                        "value": 10,
+                        "increment": 5
+                    }
+                },
+                {
+                    "name": "Horse 2",
+                    "quality": 2,
+                    "ac": 13,
+                    "hp": 28,
+                    "speed": 8,
+                    "advantage": false,
+                    "disadvantage": true,
+                    "rammingDamage": 3,
+                    "upgrades": [],
+                    "dc": {
+                        "value": 10,
+                        "increment": 5
+                    }
+                }
+            ],
+            "speed": 55,
+            "attacker": {
+                "id": "rival-4",
+                "name": "Saboteur",
+                "stats": {
+                    "STR": 1,
+                    "DEX": 4,
+                    "WIS": 2,
+                    "PER": 3,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 3,
+                    "TINK": 2,
+                    "CARP": 0,
+                    "ANIM": 1,
+                    "ATH": 2
+                },
+                "role": "Attacker"
+            },
+            "defender": {
+                "id": "rival-5",
+                "name": "Enforcer",
+                "stats": {
+                    "STR": 3,
+                    "DEX": 2,
+                    "WIS": 2,
+                    "PER": 2,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 1,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 1,
+                    "ATH": 3
+                },
+                "role": "Defender"
+            },
+            "driver": {
+                "id": "rival-6",
+                "name": "Reckless Driver",
+                "stats": {
+                    "STR": 1,
+                    "DEX": 3,
+                    "WIS": 2,
+                    "PER": 2,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 1,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 2,
+                    "ATH": 2
+                },
+                "role": "Driver"
+            }
+        },
+        {
+            "name": "Remus",
+            "story": "Noble",
+            "id": "verdant-gale",
+            "avatar": "../assets/images/Remus.png",
+            "base": {
+                "quality": 2,
+                "hp": 70,
+                "ac": 13,
+                "upgrades": [],
+                "dc": {
+                    "value": 13,
+                    "increment": 2
+                }
+            },
+            "wheels": {
+                "quality": 3,
+                "speed": 10,
+                "advantage": true,
+                "upgrades": [],
+                "dc": {
+                    "value": 12,
+                    "increment": 3
+                }
+            },
+            "horses": [
+                {
+                    "name": "Horse 1",
+                    "quality": 3,
+                    "ac": 16,
+                    "hp": 32,
+                    "speed": 5,
+                    "advantage": false,
+                    "disadvantage": false,
+                    "rammingDamage": 3,
+                    "upgrades": [],
+                    "dc": {
+                        "value": 10,
+                        "increment": 5
+                    }
+                },
+                {
+                    "name": "Horse 2",
+                    "quality": 3,
+                    "ac": 16,
+                    "hp": 32,
+                    "speed": 5,
+                    "advantage": false,
+                    "disadvantage": false,
+                    "rammingDamage": 3,
+                    "upgrades": [],
+                    "dc": {
+                        "value": 10,
+                        "increment": 5
+                    }
+                }
+            ],
+            "speed": 60,
+            "attacker": {
+                "id": "rival-7",
+                "name": "Honor Guard",
+                "stats": {
+                    "STR": 2,
+                    "DEX": 2,
+                    "WIS": 2,
+                    "PER": 2,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 1,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 1,
+                    "ATH": 2
+                },
+                "role": "Attacker"
+            },
+            "defender": {
+                "id": "rival-8",
+                "name": "Knight Protector",
+                "stats": {
+                    "STR": 3,
+                    "DEX": 2,
+                    "WIS": 2,
+                    "PER": 2,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 2,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 1,
+                    "ATH": 3
+                },
+                "role": "Defender"
+            },
+            "driver": {
+                "id": "rival-9",
+                "name": "Proud Driver",
+                "stats": {
+                    "STR": 1,
+                    "DEX": 3,
+                    "WIS": 1,
+                    "PER": 2,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 1,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 2,
+                    "ATH": 2
+                },
+                "role": "Driver"
+            }
+        },
+        {
+            "name":"Ashen",
+            "story":"fujiBacked",
+            "id": "ashen-fang",
+            "avatar":"../assets/images/Ashen.png",
+            "base": {
+                "quality": 3,
+                "hp": 90,
+                "ac": 12,
+                "upgrades": [],
+                "dc": {
+                    "value": 13,
+                    "increment": 2
+                }
+            },
+            "wheels": {
+                "quality": 2,
+                "speed": 5,
+                "advantage": false,
+                "upgrades": [],
+                "dc": {
+                    "value": 12,
+                    "increment": 3
+                }
+            },
+            "horses": [
+                {
+                    "name": "Horse 1",
+                    "quality": 3,
+                    "ac": 13,
+                    "hp": 35,
+                    "speed": 4,
+                    "advantage": false,
+                    "disadvantage": false,
+                    "rammingDamage": 6,
+                    "upgrades": [],
+                    "dc": {
+                        "value": 10,
+                        "increment": 5
+                    }
+                },
+                {
+                    "name": "Horse 2",
+                    "quality": 3,
+                    "ac": 13,
+                    "hp": 35,
+                    "speed": 4,
+                    "advantage": false,
+                    "disadvantage": false,
+                    "rammingDamage": 6,
+                    "upgrades": [],
+                    "dc": {
+                        "value": 10,
+                        "increment": 5
+                    }
+                }
+            ],
+            "speed": 50,
+            "attacker": {
+                "id": "rival-10",
+                "name": "Ram Fighter",
+                "stats": {
+                    "STR": 5,
+                    "DEX": 1,
+                    "WIS": 1,
+                    "PER": 2,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 0,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 2,
+                    "ATH": 4
+                },
+                "role": "Attacker"
+            },
+            "defender": {
+                "id": "rival-11",
+                "name": "Brute Guard",
+                "stats": {
+                    "STR": 4,
+                    "DEX": 1,
+                    "WIS": 1,
+                    "PER": 1,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 1,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 1,
+                    "ATH": 4
+                },
+                "role": "Defender"
+            },
+            "driver": {
+                "id": "rival-12",
+                "name": "Feral Driver",
+                "stats": {
+                    "STR": 2,
+                    "DEX": 2,
+                    "WIS": 2,
+                    "PER": 2,
+                    "SUR": 2,
+                    "NAT": 0,
+                    "INV": 1,
+                    "TINK": 0,
+                    "CARP": 0,
+                    "ANIM": 2,
+                    "ATH": 3
+                },
+                "role": "Driver"
+            }
+        }
+    ]
+}

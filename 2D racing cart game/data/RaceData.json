@@ -1,0 +1,297 @@
+{
+    "event_types": {
+        "TRACK_TRAP": "Track Trap",
+        "ENEMY_ATTACK": "Enemy Attack",
+        "MANEUVER": "Maneuverability Challenge",
+        "CART_ISSUE": "Cart Issue",
+        "HORSE_ISSUE": "Horse Issue"
+    },
+    "track_traps": [
+        {
+            "name": "Collapsed Bridge",
+            "desc": "A partially broken bridge forces a dangerous crossing at speed.",
+            "stat": "WIS",
+            "dc": 16,
+            "onFail": {
+                "cartHP": 5,
+                "speed": 1
+            }
+        },
+        {
+            "name": "Spiked Barricade",
+            "desc": "Hidden spikes tear at the cart if not avoided in time.",
+            "stat": "DEX",
+            "dc": 17,
+            "onFail": {
+                "cartHP": 6,
+                "horse1HP": 2
+            }
+        },
+        {
+            "name": "Loose Gravel",
+            "desc": "The wheels hit a stretch of unstable gravel.",
+            "stat": "WIS",
+            "dc": 13,
+            "onFail": {
+                "cartHP": 2
+            }
+        },
+        {
+            "name": "Sharp Turn",
+            "desc": "The course bends suddenly and threatens to throw the cart wide.",
+            "stat": "DEX",
+            "dc": 14,
+            "onFail": {
+                "cartHP": 3
+            }
+        },
+        {
+            "name": "Mud Patch",
+            "desc": "The horses struggle to keep traction through deep mud.",
+            "stat": "WIS",
+            "dc": 12,
+            "onFail": {
+                "speed": 2
+            }
+        },
+        {
+            "name": "Broken Rut",
+            "desc": "A deep rut jars the cart and threatens the frame.",
+            "stat": "WIS",
+            "dc": 15,
+            "onFail": {
+                "cartHP": 4
+            }
+        },
+        {
+            "name": "Fallen Crate",
+            "desc": "Debris litters the lane and must be avoided at speed.",
+            "stat": "DEX",
+            "dc": 13,
+            "onFail": {
+                "cartHP": 2,
+                "horse1HP": 1
+            }
+        }
+    ],
+    "maneuvers": [
+        {
+            "name": "Hairpin Death Turn",
+            "desc": "An impossibly tight turn threatens to flip the cart entirely.",
+            "stat": "DEX",
+            "dc": 16,
+            "onFail": {
+                "speed": 3,
+                "cartHP": 2
+            }
+        },
+        {
+            "name": "Thread the Needle",
+            "desc": "A near-impossible gap between obstacles demands perfect control.",
+            "stat": "WIS",
+            "dc": 17,
+            "onFail": {
+                "cartHP": 4,
+                "speed": 2
+            }
+        },
+        {
+            "name": "Tight Corner",
+            "desc": "The cart must hug a brutal inside turn without losing control.",
+            "stat": "DEX",
+            "dc": 13,
+            "onFail": {
+                "speed": 2
+            }
+        },
+        {
+            "name": "Narrow Gap",
+            "desc": "The track pinches and leaves almost no room to pass cleanly.",
+            "stat": "WIS",
+            "dc": 14,
+            "onFail": {
+                "cartHP": 2
+            }
+        },
+        {
+            "name": "Sudden Descent",
+            "desc": "A sharp drop threatens to throw the cart off balance.",
+            "stat": "WIS",
+            "dc": 13,
+            "onFail": {
+                "cartHP": 2,
+                "speed": 1
+            }
+        },
+        {
+            "name": "Chicane",
+            "desc": "A rapid left-right sequence demands precise control.",
+            "stat": "DEX",
+            "dc": 15,
+            "onFail": {
+                "speed": 3
+            }
+        },
+        {
+            "name": "Crowded Turn",
+            "desc": "Several carts converge at once and force a risky line.",
+            "stat": "WIS",
+            "dc": 14,
+            "onFail": {
+                "cartHP": 1,
+                "horse1HP": 1
+            }
+        }
+    ],
+    "cart_issues": [
+        {
+            "name": "Axle Snap",
+            "desc": "The axle nearly breaks under pressure and must be stabilized instantly.",
+            "resolver": "defender",
+            "stat": "TINK",
+            "dc": 16,
+            "onFail": {
+                "cartHP": 5,
+                "speed": 2
+            }
+        },
+        {
+            "name": "Structural Collapse",
+            "desc": "Multiple weak points give way at once, threatening total failure.",
+            "resolver": "defender",
+            "stat": "CARP",
+            "dc": 17,
+            "onFail": {
+                "cartHP": 7
+            }
+        },
+        {
+            "name": "Loose Wheel",
+            "desc": "One wheel starts to wobble dangerously under the strain of the course.",
+            "resolver": "defender",
+            "stat": "INV",
+            "dc": 13,
+            "onFail": {
+                "speed": 2
+            }
+        },
+        {
+            "name": "Axle Grind",
+            "desc": "The axle screeches and threatens to seize if not stabilized.",
+            "resolver": "defender",
+            "stat": "TINK",
+            "dc": 14,
+            "onFail": {
+                "cartHP": 2,
+                "speed": 1
+            }
+        },
+        {
+            "name": "Frame Crack",
+            "desc": "The cart frame splinters under repeated impacts.",
+            "resolver": "defender",
+            "stat": "CARP",
+            "dc": 15,
+            "onFail": {
+                "cartHP": 4
+            }
+        },
+        {
+            "name": "Shifted Weight",
+            "desc": "The cart's balance slips and throws off its movement.",
+            "resolver": "driver",
+            "stat": "WIS",
+            "dc": 13,
+            "onFail": {
+                "speed": 2
+            }
+        },
+        {
+            "name": "Weapon Mount Shake",
+            "desc": "The mounted equipment rattles violently and strains the cart body.",
+            "resolver": "defender",
+            "stat": "INV",
+            "dc": 12,
+            "onFail": {
+                "cartHP": 2
+            }
+        }
+    ],
+    "horse_issues": [
+        {
+            "name": "Stampede Frenzy",
+            "desc": "The horses panic wildly and threaten to bolt off course.",
+            "resolver": "driver",
+            "stat": "ANIM",
+            "dc": 16,
+            "onFail": {
+                "horse1HP": 3,
+                "speed": 2
+            }
+        },
+        {
+            "name": "Total Breakdown",
+            "desc": "The team loses all coordination and risks complete loss of control.",
+            "resolver": "driver",
+            "stat": "WIS",
+            "dc": 17,
+            "onFail": {
+                "horse1HP": 2,
+                "horse2HP": 2,
+                "speed": 3
+            }
+        },
+        {
+            "name": "Panicked Horse",
+            "desc": "One horse startles and threatens to break formation.",
+            "resolver": "driver",
+            "stat": "ANIM",
+            "dc": 13,
+            "onFail": {
+                "horse1HP": 2,
+                "speed": 1
+            }
+        },
+        {
+            "name": "Exhausted Pull",
+            "desc": "The team begins to drag and loses momentum under strain.",
+            "resolver": "driver",
+            "stat": "WIS",
+            "dc": 12,
+            "onFail": {
+                "speed": 2
+            }
+        },
+        {
+            "name": "Bad Harness Pull",
+            "desc": "One horse pulls unevenly and throws off the team’s rhythm.",
+            "resolver": "driver",
+            "stat": "ANIM",
+            "dc": 14,
+            "onFail": {
+                "horse2HP": 1,
+                "speed": 1
+            }
+        },
+        {
+            "name": "Rearing Fit",
+            "desc": "A horse rears suddenly and risks injuring itself in the chaos.",
+            "resolver": "driver",
+            "stat": "CHA",
+            "dc": 14,
+            "onFail": {
+                "horse1HP": 2
+            }
+        },
+        {
+            "name": "Dragged Pace",
+            "desc": "The horses lose synchronization and the cart slows badly.",
+            "resolver": "driver",
+            "stat": "WIS",
+            "dc": 13,
+            "onFail": {
+                "speed": 3
+            }
+        }
+    ]
+}

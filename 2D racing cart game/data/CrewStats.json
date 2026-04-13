@@ -3,7 +3,7 @@
     {
       "id": "pc-1",
       "name": "Yapo",
-      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "avatar": "/assets/images/Yapo.png",
       "stats": {
         "STR": 0,
         "DEX": 1,
@@ -24,7 +24,7 @@
     {
       "id": "pc-2",
       "name": "Alba",
-      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "avatar": "/assets/images/Alba.png",
       "stats": {
         "STR": 2,
         "DEX": 4,
@@ -45,7 +45,7 @@
     {
       "id": "pc-3",
       "name": "Jobry",
-      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "avatar": "/assets/images/Jobry.png",
       "stats": {
         "STR": 2,
         "DEX": 3,
@@ -66,7 +66,7 @@
     {
       "id": "pc-4",
       "name": "Obiwa",
-      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "avatar": "/assets/images/Obiwa.png",
       "stats": {
         "STR": 3,
         "DEX": 2,
@@ -87,7 +87,7 @@
     {
       "id": "pc-5",
       "name": "Vlad",
-      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "avatar": "/assets/images/Vlad.jpg",
       "stats": {
         "STR": 4,
         "DEX": 2,
@@ -108,7 +108,7 @@
     {
       "id": "pc-6",
       "name": "Brianna",
-      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "avatar": "/assets/images/Brianna.png",
       "stats": {
         "STR": 4,
         "DEX": 4,
@@ -129,7 +129,7 @@
     {
       "id": "pc-7",
       "name": "Geariosa",
-      "avatar": "REPLACE_WITH_IMAGE_URL_LATER",
+      "avatar": "/assets/images/Geariosa.png",
       "stats": {
         "STR": 0,
         "DEX": 2,
@@ -148,4 +148,5 @@
       "notes": ""
     }
   ]
+
 }

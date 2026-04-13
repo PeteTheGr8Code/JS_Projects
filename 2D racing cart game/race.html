@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Race — Whisteria Circuit</title>
+  <link rel="stylesheet" href="./html-css/race.css">
+</head>
+<body>
+  <header>
+    <h1>Race — Whisteria Circuit</h1>
+    <div class="sub">Advance through race events and resolve hazards one checkpoint at a time.</div>
+    <button id="muteToggle" class="secondary" style="margin-top:8px;">Toggle Audio</button>
+  </header>
+
+  <div class="topbar">
+    <div class="badge">Lap: <strong id="lapBadge">1</strong> / 6</div>
+    <div class="badge">Checkpoint: <strong id="checkpointBadge">1</strong> / 24</div>
+    <div class="badge">Status: <strong id="raceStatus">Running</strong></div>
+  </div>
+
+  <div class="container">
+    <div class="panel left">
+      <h3>Cart State</h3>
+      <div class="stats">
+        <div class="section-title">Cart</div>
+        <div class="row"><span>HP</span><span class="val" id="cartHP">—</span></div>
+        <div class="row"><span>AC</span><span class="val" id="cartAC">—</span></div>
+        <div class="row"><span>Speed</span><span class="val" id="cartSpeed">—</span></div>
+
+        <div class="section-title">Horse 1</div>
+        <div class="row"><span>HP</span><span class="val" id="horse1HP">—</span></div>
+        <div class="row"><span>AC</span><span class="val" id="horse1AC">—</span></div>
+
+        <div class="section-title">Horse 2</div>
+        <div class="row"><span>HP</span><span class="val" id="horse2HP">—</span></div>
+        <div class="row"><span>AC</span><span class="val" id="horse2AC">—</span></div>
+
+        <div class="section-title">Crew</div>
+        <div class="row"><span>Driver</span><span class="val" id="driverName">—</span></div>
+        <div class="row"><span>Attacker</span><span class="val" id="attackerName">—</span></div>
+        <div class="row"><span>Defender</span><span class="val" id="defenderName">—</span></div>
+      </div>
+    </div>
+
+    <div class="panel center">
+      <h3>Current Event</h3>
+      <div class="task-title" id="eventTitle">Loading race…</div>
+      <p class="task-desc" id="eventDesc"></p>
+
+      <div class="event-card">
+        <div class="event-type" id="eventType">—</div>
+        <div class="event-meta">
+          <div><strong>Lap:</strong> <span id="eventLap">—</span></div>
+          <div><strong>Checkpoint:</strong> <span id="eventCheckpoint">—</span></div>
+        </div>
+
+        <div id="eventDetail" class="muted">Generate the next event to begin.</div>
+
+        <div class="actions">
+          <button id="nextEventBtn">Generate Event</button>
+          <button id="resolveEventBtn" class="secondary" disabled>Resolve Event</button>
+          <button id="resetRaceBtn" class="secondary">Reset Race</button>
+        </div>
+
+        <div class="result" id="result"></div>
+
+        <div id="rollPanel" style="margin-top:12px; display:none;">
+          <div id="rollPrompt" style="font-weight:700; margin-bottom:6px;">Enter roll</div>
+          <input
+            id="manualRollInput"
+            type="number"
+            min="1"
+            max="20"
+            placeholder="d20 result"
+            style="padding:10px 12px; border-radius:8px; border:1px solid var(--border); font-size:14px; width:180px; background:white; color:var(--ink);"
+          />
+        </div>
+      </div>
+
+      <div class="muted" style="font-size:13px;">
+        Events are now generated first, then resolved after you enter the player’s roll.
+      </div>
+    </div>
+
+    <div class="panel right">
+      <h3>Race Log</h3>
+      <div class="log" id="log"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/race.js"></script>
+</body>
+</html>
